@@ -1,4 +1,4 @@
-<Project Sdk="Dalamud.NET.Sdk/14.0.1">
+<Project Sdk="Dalamud.NET.Sdk/15.0.0">
   <PropertyGroup>
     <AssemblyName>Squadronista</AssemblyName>
     <Authors>liza</Authors>
@@ -9,15 +9,6 @@
     <IsPackable>false</IsPackable>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="ECommons" Version="3.1.0.6" />
-  </ItemGroup>
-
-
-  <ItemGroup>
-    <Reference Include="LLib">
-      <HintPath>lib\LLib.dll</HintPath>
-      <Private>true</Private>
-      <CopyLocal>true</CopyLocal>
-    </Reference>
+    <PackageReference Include="ECommons" Version="3.2.1.22" />
   </ItemGroup>
 </Project>

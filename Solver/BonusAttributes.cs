@@ -20,7 +20,7 @@ public sealed class BonusAttributes : Attributes, IEquatable<BonusAttributes>
             Fix(ref num1, cappedPhysicalGained, ref num2, cappedMentalGained, ref num3, cappedTacticalGained);
             Fix(ref num2, cappedMentalGained, ref num1, cappedPhysicalGained, ref num3, cappedTacticalGained);
             Fix(ref num3, cappedTacticalGained, ref num1, cappedPhysicalGained, ref num2, cappedMentalGained);
-            
+
             return new BonusAttributes
             {
                 PhysicalAbility = num1,
@@ -29,7 +29,7 @@ public sealed class BonusAttributes : Attributes, IEquatable<BonusAttributes>
                 Cap = Cap
             };
         }
-        
+
         return new BonusAttributes
         {
             PhysicalAbility = PhysicalAbility + training.PhysicalGained,

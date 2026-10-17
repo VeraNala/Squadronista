@@ -1,3 +1,7 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using Dalamud.Game.Addon.Lifecycle;
 using Dalamud.Game.Addon.Lifecycle.AddonArgTypes;
 using Dalamud.Game.Command;
@@ -13,11 +17,6 @@ using FFXIVClientStructs.FFXIV.Component.GUI;
 using Lumina.Excel.Sheets;
 using Squadronista.Solver;
 using Squadronista.Windows;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using ValueType = FFXIVClientStructs.FFXIV.Component.GUI.ValueType;
 
 #nullable enable
 namespace Squadronista;
@@ -99,7 +98,7 @@ public sealed class SquadronistaPlugin : IDalamudPlugin
                 TacticalGained = x.TacticalBonus
             }).ToList().AsReadOnly() ?? new List<Training>().AsReadOnly();
 
-        _mainWindow = new MainWindow(this, pluginLog, addonLifecycle, gameGui);
+        _mainWindow = new MainWindow(this, pluginLog, addonLifecycle, gameGui, dataManager);
         _windowSystem.AddWindow(_mainWindow);
 
         // Register command
@@ -113,6 +112,7 @@ public sealed class SquadronistaPlugin : IDalamudPlugin
         });
 
         _pluginInterface.UiBuilder.Draw += _windowSystem.Draw;
+        _pluginInterface.UiBuilder.OpenMainUi += ToggleMainWindow;
         _pluginInterface.UiBuilder.OpenConfigUi += ToggleMainWindow;
         _clientState.Logout += ResetCharacterSpecificData;
 
@@ -182,7 +182,7 @@ public sealed class SquadronistaPlugin : IDalamudPlugin
                 var nameIndex = 6 + z * 15;
                 var n = (AtkUnitBase*)args.Addon.Address;
                 var n2 = n->AtkValues[nameIndex];
-                if (n2.Type == ValueType.String)
+                if (n2.Type == AtkValueType.String)
                 {
                     if (n2.GetValueAsString() == name)
                     {
@@ -299,7 +299,7 @@ public sealed class SquadronistaPlugin : IDalamudPlugin
             return;
         }
 
-       var idx = FindMatchingIndex(selectedMission.PossibleAttributes, required);
+        var idx = FindMatchingIndex(selectedMission.PossibleAttributes, required);
         if (idx < 0)
         {
             _waitingForCorrectRequiredAttrs = true;

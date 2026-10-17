@@ -1,5 +1,5 @@
 {
-  "Author": "Liza",
+  "Author": "Puni.sh Squadron Gang",
   "Name": "Squadronista",
   "Punchline": "Squadron Mission Solver",
   "Description": "Helps optimize squadron mission compositions",
@@ -10,7 +10,7 @@
     "grand company",
     "missions"
   ],
-  "DalamudApiLevel": 14,
+  "DalamudApiLevel": 15,
   "LoadPriority": 0,
   "CanUnloadAsync": false,
   "RepoUrl": "https://github.com/VeraNala/Squadronista",

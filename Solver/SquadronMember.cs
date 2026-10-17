@@ -1,10 +1,7 @@
+using System.Collections.Generic;
 using Dalamud.Plugin.Services;
 using ECommons;
-using ECommons.Logging;
 using Lumina.Excel.Sheets;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 
 #nullable enable
 namespace Squadronista.Solver;

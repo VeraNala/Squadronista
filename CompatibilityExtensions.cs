@@ -9,7 +9,7 @@ namespace Squadronista
     {
         // DistinctBy extension method (for older .NET versions compatibility)
         public static IEnumerable<TSource> DistinctBy<TSource, TKey>(
-            this IEnumerable<TSource> source, 
+            this IEnumerable<TSource> source,
             Func<TSource, TKey> keySelector)
         {
             var seenKeys = new HashSet<TKey>();
@@ -30,7 +30,7 @@ namespace Squadronista
 
         // GetValueOrDefault for Dictionary
         public static TValue? GetValueOrDefault<TKey, TValue>(
-            this Dictionary<TKey, TValue> dictionary, 
+            this Dictionary<TKey, TValue> dictionary,
             TKey key,
             TValue? defaultValue = default)
             where TKey : notnull
